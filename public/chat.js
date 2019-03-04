@@ -8,12 +8,17 @@ window.onload = function() {
 	var name = document.getElementById("name");
 
 	socket.on('message', function (data) {
+		console.log('message found')
 		if(data.message) {
+			console.log('Fire!!!')
 			messages.push(data);
+			console.log(messages.length)
 			var html = '';
-			for(var i=0; i<messages.lenght; i++) {
-				html += '<b>' + (messages[i].username ? messages[i].username : 'Server') + ':</b>';
-				html += messages[i].messages + '<br />';
+			for(var i=0; i<messages.length; i++) {
+				console.log(messages[i].username)
+				html = html + '<b>' + (messages[i].username ? messages[i].username : 'Server') + ':</b>';
+				html = html + messages[i].message + '<br />';
+				console.log(html)
 //				html += messages[i] + '<br />';
 			}
 			content.innerHTML = html; 
@@ -29,6 +34,7 @@ window.onload = function() {
 		} else { 
 		var text = field.value; 
 		socket.emit('send', {message: text, username: name.value});
+		console.log('test sent')
 	}
 };
 }
