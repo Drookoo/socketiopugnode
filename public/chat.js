@@ -1,8 +1,9 @@
 window.onload = function() {
+	console.log('test')
 	var messages = [];
 	var socket = io.connect('http://localhost:3700');
 	var field = document.getElementById("field");
-	var sendButton = document.getElementById("Send");
+	var sendButton = document.getElementById("send");
 	var content = document.getElementById("content");
 	var name = document.getElementById("name");
 
@@ -22,6 +23,7 @@ window.onload = function() {
 	});
 
 	sendButton.onclick = function() {
+		console.log('test send')
 		if(name.value == "") {
 			alert("Please type your name!");
 		} else { 
